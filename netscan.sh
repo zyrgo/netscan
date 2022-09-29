@@ -7,7 +7,7 @@ reset=$(tput sgr0)
 
 cidrScan() {
     printf "%s${yellow}Scanning alive ips in CIDR block:${red} $1 ${reset} \n"
-    masscan --range "$1" --top-ports 100 --rate 1000 --output-format json --output-filename scan-results.json
+    masscan --range "$1" --top-ports 250 --rate 1000 --output-format json --output-filename scan-results.json
 
     printf "%s\n\t${yellow}Parsing alive ips and ports:${red} $1 ${reset} \n"
     sed <scan-results.json -e '/^\[/d' -e'/^\]/d' -e 's/,$//' | jq -r '[.ip, .ports[0].port] | @tsv' | sed 's/\t/:/' | sort -t . -k 1,1n -k 2,2n -k 3,3n -k 4,4n  > alive-hosts
