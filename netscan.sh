@@ -69,7 +69,7 @@ while [ "$#" -gt 0 ]; do
         cidrScan "$2" && exit 0
         ;;
     -h | --help)
-        printf "%s\t${green}Usage: asn-scan subcommand <asn-number>OR<cidr-number>${reset}\n\n\t${yellow}Example (scanning asn): asn-scan {-a|--asn} 15169 \n\tExample (scanning cidr): asn-scan {-c|--cidr} 8.8.4.4.0/24' ${reset}\n" && exit 0
+        printf "%s\t${green}Usage: netscan subcommand <asn-number>OR<cidr-number>${reset}\n\n\t${yellow}Example (scanning asn): asn-scan {-a|--asn} 15169 \n\tExample (scanning cidr): asn-scan {-c|--cidr} 8.8.4.4.0/24' ${reset}\n" && exit 0
         ;;
     *)
         printf "%s\n\t${red}Invalid option: ${1}\n\tuse netscan -h or --help for help\n\n${reset}" && exit 0
